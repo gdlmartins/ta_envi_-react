@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   border: 1px solid white;
   height:100vh;
+  
   background: ${(props) => props.theme.colors.backgroundLandingPage};
+
 `;
 
 export const MainContainer = styled.div`
@@ -11,14 +13,23 @@ export const MainContainer = styled.div`
   justify-items: center;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-gap: 0  2rem;
   margin: 100px auto;
   height: 78vh;
   width: 80%;
+  background: ${(props) => props.theme.colors.backgroundLandingPage};
 
-  @media (max-width: 768px) {
+ 
+  @media (max-width: 960px) {
     gap: 1px;
     height: 97vh;
+    margin: 1px auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  @media (max-width: 768px) {
     margin: 10px auto;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
@@ -34,18 +45,25 @@ export const ImageLanding = styled.div`
   background-repeat: no-repeat;
   box-shadow: ${(props) => props.theme.shadow.boxShadow};
   border-radius: 1rem;
+  grid-row:1/4;
 
 
   @media (max-width: 1024px) {
     height: 626px;
-    width: 320px;
+    width: 311px;
+  }
+  @media (max-width: 960px) {
+    margin-top:20px;
+    height: 513.27px;
+    width: 262px;
+    grid-row: 2/3;
+  }
+  @media (max-width: 768px) {
+    margin:1px;
+    height: 363px;
+    width: 185.63px;
   }
 
-  @media (max-width: 768px) {
-    height: 518px;
-    width: 264px;
-    grid-row: -1;
-  }
 `;
 
 export const TitleContainer = styled.div`
@@ -53,16 +71,39 @@ export const TitleContainer = styled.div`
   justify-self: end;
   max-width: 460px;
   flex-direction: column;
+  grid-column:2/3;
+  grid-row:2/3;
+
+
+  @media (max-width: 960px) {
+    align-items: center;
+    justify-self: center;
+    grid-column:1/2;
+    grid-row: 1/2;
+  }
+
 
   @media (max-width: 768px) {
     align-items: center;
     justify-self: center;
     width: 80%;
+    grid-column:1/2;
+    grid-row: 1/2;
   }
 `;
 
 export const ButtonContainer = styled.div`
+grid-column:2/3;
+grid-row:3/4;
+align-self: start;
+justify-self: end;
 
+@media (max-width: 960px) {
+
+  grid-column: 1/2;
+  grid-row:3/4;
+  justify-self: center;
+}
 `
 
 export const Button = styled.button`
@@ -86,7 +127,13 @@ export const Button = styled.button`
   cursor: pointer;
 
 
+@media (max-width: 960px) {
+  max-width: 270px;
+}
+
+
 @media (max-width: 768px) {
+
     font-size: 1rem;
     max-width: 236px;
     align-self:center;

@@ -10,6 +10,10 @@ export const Title = styled.h1`
   line-height: 1;
   font-weight: bold;
 
+  @media (max-width: 960px) {
+    text-align: center;
+  }
+
   @media (max-width: 768px) {
     font-size: 2rem;
     line-height: 1.5rem;
@@ -32,8 +36,6 @@ export const ContainerLandingTitle = styled.div`
 
   @media (max-width: 768px) {
     text-align: center;
-    // border: 2px solid red;
-
     width: 80%;
     flex-direction: column;
     justify-content: center;
@@ -45,12 +47,15 @@ export const ContainerLandingTitle2 = styled.div`
   text-align: end;
   display: flex;
 
+  @media (max-width: 960px) {
+    text-align: center;
+  }
+
   span {
     font-size:1.5rem;
     font-weight:700;
-    // border: 1px solid red;
     // text-align: end;
-    color: ${(props) => props.theme.colors.darkpurple};
+    color: ${(props) => props.theme.colors.txtbg1};
 
     @media(max-width: 1024px){
       font-size:1.3rem;

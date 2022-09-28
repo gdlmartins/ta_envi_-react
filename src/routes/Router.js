@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Error from "../pages/404/Error";
 import Create from "../pages/create";
+import Event from "../pages/event";
 import Landing from "../pages/landing";
 
 const Router = () => {
@@ -8,7 +9,7 @@ const Router = () => {
     <Routes>
       <Route path="/" element ={<Landing/>} />
       <Route path="/create" element ={<Create/>} />
-      {/* <Route path="/event" element={<Event/>}/> */}
+      <Route path="/event" element={<Event/>}/>
 
       <Route path="/*" element ={<Error/> }/>
     </Routes>

@@ -1,117 +1,159 @@
 import { useNavigate } from "react-router";
-import { gotoHome } from "../../routes/coordinator";
+// import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { gotoEvent, gotoHome } from "../../routes/coordinator";
 import { Button, Container } from "../landing/styles";
 import * as Styled from "./styles";
 
-import { IoSettingsSharp } from "react-icons/io5";
-import { useState } from "react";
+
+import useForm from '../../hooks/useForm';
+import { IoCameraSharp , IoArrowBack } from "react-icons/io5";
+import { useEffect, useState } from "react";
 
 import { storage } from "../../service/firebase";
 import { v4 as uuidV4 } from "uuid";
-import { ref,uploadBytes, listAll, list, getDownloadURL } from "@firebase/storage";
-import { useEffect } from "react";
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  list,
+  getDownloadURL,
+} from "@firebase/storage";
 
 const Create = () => {
+  // const { setData } =useContext(GlobalStateContext);
+
+  const { form, onChange, clear } = useForm({
+    eventName: "",
+    starts: "",
+    ends: "",
+    location: "",
+    description: "",
+    url: "",
+  });
   const navigate = useNavigate();
   const [imageUpload, setImageUpload] = useState(null);
   const [imageList, setImageList] = useState(null);
+  const imageListRef = ref(storage, "images");
 
-  const imageListRef = ref(storage , "images");
 
-//   useEffect(()=>{
-//       listAll(imageListRef).then((resp)=>{
-//           resp.
-//       })
-//   },[])
+  const onSubmit = (e)=>{
+    e.preventDefault();
+    gotoEvent(navigate);
+    console.log("submit")
+    console.log(form)
+    // setData(form)
 
-  const uploadImage =()=>
-   {
+  }
 
-      if (imageUpload === null )return;
-
-      const imageRef = ref(storage, `images/${imageUpload.name + uuidV4() }`);
-   
-      uploadBytes(imageRef , imageUpload).then((snaphsot)=>
-      {
-          getDownloadURL(snaphsot.ref).then((url)=> setImageList(url))
-        
-      })
-   }
-         
-      
-  
-
+  useEffect(()=>{
+    if (imageUpload === null) return;
+    const imageRef = ref(storage, `images/${imageUpload.name + uuidV4()}`);
+    uploadBytes(imageRef, imageUpload).then((snaphsot) => {
+      getDownloadURL(snaphsot.ref).then((url) => setImageList(url));
+    });
+  },[(e)=>setImageUpload(e.target.files[0])])
 
   return (
     <Container>
       <Styled.Header>
-        <input
+          <button onClick={() => gotoHome(navigate)}><IoArrowBack
+                style={{
+                  width: "28px",
+                  height: "28px",
+                  color: `rgba(132,86,236,1)`,
+                }}
+              /></button>
+        <h1>Create a Event</h1>
+        <div>
+        <label htmlFor='pic'> 
+
+        <Styled.IoContainer>
+        <IoCameraSharp
+         style={{
+          width: "28px",
+          height: "28px",
+          color: `rgba(132,86,236,1)`,
+        }}
+        />
+          </Styled.IoContainer> 
+        </label>
+         <input
+          style={{display:"none"}}
+          id='pic'
           type='file'
           onChange={(e) => setImageUpload(e.target.files[0])}
         />
-        <button
-        onClick={uploadImage}
-        >UploadImage</button>
-        <h1>Create page</h1>
-        <Styled.IoContainer>
-          <IoSettingsSharp
-            style={{
-              width: "28px",
-              height: "28px",
-              color: `rgba(132,86,236,1)`,
-            }}
-          />
-        </Styled.IoContainer>
+        
+      <Styled.Imagem src={imageList} />
+      </div>
       </Styled.Header>
-
-      <button onClick={() => gotoHome(navigate)}>Cancel</button>
       <div>
-        <form>
-          <Styled.Form>
+        <Styled.Form onSubmit={onSubmit}>
+          <Styled.ContainerInput>
             <label htmlFor='event'>🎉 Event name</label>
             <input
-              id='party'
-              type='datetime-local'
-              name='event'
-              min='2017-06-01T08:30'
-              max='2017-06-30T16:30'
+              name="eventName"
+              value={form.eventName}
+              onChange={onChange}
               required
             />
-            <span className='validity'></span>
+          </Styled.ContainerInput>
+
+           <Styled.ContainerInput>
+            <label htmlFor='starts'>🗓 It starts at</label>
             <input
-              id='party'
+              name="starts"
+              // value={form.starts}
+              onChange={onChange}
+              id='starts'
               type='datetime-local'
-              name='event'
-              min='2017-06-01T08:30'
-              max='2017-06-30T16:30'
               required
             />
-            <span className='validity'></span>
+          </Styled.ContainerInput>
+          <Styled.ContainerInput>
+            <label htmlFor='ends'>🏁 It ends at</label>
             <input
-              id='party'
+              id='ends'
+              name="ends"
+              // value={form.ends}
+              onChange={onChange}
               type='datetime-local'
-              name='event'
-              min='2017-06-01T08:30'
-              max='2017-06-30T16:30'
-              required
             />
-            <span className='validity'></span>
+          </Styled.ContainerInput> 
+
+          <Styled.ContainerInput>
+            <label htmlFor='location'>📍 It’s happening at</label>
             <input
-              id='party'
-              type='datetime-local'
-              name='event'
-              min='2017-06-01T08:30'
-              max='2017-06-30T16:30'
+               name="location"
+               value={form.location}
+               onChange={onChange}
               required
             />
-            <span className='validity'></span>
-          </Styled.Form>
+          </Styled.ContainerInput>
+          <Styled.ContainerInput>
+            <label htmlFor='url'>🔗 Add a URL link</label>
+            <input
+              name="url"
+              onChange={onChange}
+              value={form.url}
+            />
+          </Styled.ContainerInput>
+          <Styled.ContainerInput>
+            <label htmlFor='description'>✏️Description</label>
+            <input
+              name="description"
+              onChange={onChange}
+              value={form.description}
+            />
+          </Styled.ContainerInput>
+
           <div>
-            <Button type='submit'>Create</Button>
+            <Button type='submit'>Create Event</Button>
           </div>
-        </form>
+
+        </Styled.Form>
       </div>
-      <img src={imageList}/>
+
     </Container>
   );
 };

@@ -10,17 +10,14 @@ const Landing = () => {
     <Styled.Container>
       <Styled.MainContainer>
         <Styled.ImageLanding />
-
         <Styled.TitleContainer>
           <LandingTitle />
-         
- 
-        <Styled.Button onClick={() => gotoCreate(navigate)}>
+        </Styled.TitleContainer>
+        <Styled.ButtonContainer>
+          <Styled.Button onClick={() => gotoCreate(navigate)}>
             🎉 Create my event
           </Styled.Button>
-  
-        </Styled.TitleContainer>
-
+        </Styled.ButtonContainer>
       </Styled.MainContainer>
     </Styled.Container>
   );
