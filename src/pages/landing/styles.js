@@ -44,7 +44,7 @@ export const ImageLanding = styled.div`
   @media (max-width: 768px) {
     height: 518px;
     width: 264px;
-    grid-row:-2;
+    grid-row: -1;
   }
 `;
 

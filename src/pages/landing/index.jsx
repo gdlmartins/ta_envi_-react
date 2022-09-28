@@ -14,13 +14,13 @@ const Landing = () => {
         <Styled.TitleContainer>
           <LandingTitle />
          
-        </Styled.TitleContainer>
-
-        <Styled.ButtonContainer> 
+ 
         <Styled.Button onClick={() => gotoCreate(navigate)}>
             🎉 Create my event
           </Styled.Button>
-        </Styled.ButtonContainer>
+  
+        </Styled.TitleContainer>
+
       </Styled.MainContainer>
     </Styled.Container>
   );
