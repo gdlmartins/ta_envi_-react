@@ -23,10 +23,7 @@ export const ContainerText = styled.div`
   
   }
 
-  // @media (max-width: 768px) {
-  //   grid-row: 2/3;
- 
-  // }
+
 `;
 
 export const ContainerImage = styled.div`
@@ -36,12 +33,16 @@ export const ContainerImage = styled.div`
   justify-self: center;
   align-self: center;
 
-  // border: 2px solid red;
 
   img {
     width: 500px;
     height: 500px;
    
+    @media (max-width: 768px) {
+
+      width: 300px;
+      height: 300px;
+    }
   }
 
   @media (max-width: 960px) {

@@ -7,7 +7,6 @@ import { IoCalendarOutline } from "react-icons/io5";
 import * as Styled from "./styles";
 
 import cake from "../../assets/cake.png";
-import { IoContainer } from "../create/styles";
 const Event = (props) => {
   const { data, imageFromEvent } = useContext(GlobalStateContext);
 
@@ -28,7 +27,6 @@ const Event = (props) => {
             </Styled.Icons>
             <span>{data?.eventName}</span>
             <span>{data?.starts}</span>
-            {/* <span>{data?.ends}</span> */}
             <BsChevronRight
               style={{ width: "96px", height: "36px", borderRadius: "8px" }}
             />
