@@ -6,12 +6,12 @@ grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr 1fr;
 width: 100vw;
 height: 100vh;
-border: 10px solid blue;
+// border: 10px solid blue;
 `;
 
 export const ContainerText = styled.div`
   grid-column: 1/2;
-  border: 2px solid green;
+  // border: 2px solid green;
   grid-row: 2/3;
   display: flex;
   flex-direction: column;
@@ -36,7 +36,7 @@ export const ContainerImage = styled.div`
   justify-self: center;
   align-self: center;
 
-  border: 2px solid red;
+  // border: 2px solid red;
 
   img {
     width: 500px;
@@ -72,14 +72,14 @@ export const ContainerIcon = styled.div`
 margin:10px;
 width: 90%;
 max-width: 500px;
-border:2px solid red;
+// border:2px solid red;
 
 `
 
 export const Input = styled.div`
 // width: 250px;
 display: flex;
-border:2px solid green;
+// border:2px solid green;
 justify-content: space-between;
 align-items: center;
  span{

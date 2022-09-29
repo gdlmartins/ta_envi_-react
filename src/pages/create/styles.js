@@ -13,7 +13,6 @@ border-radius: 8px;
 
 export const Header = styled.div`
  display: flex;
- border: 5px solid red;
  justify-content: space-around;
  align-items: center;
 `
@@ -22,7 +21,6 @@ export const Form = styled.form`
 margin: 10px auto;
 
 width:90%;
-// border:1px solid red;
 display: flex;
 flex-direction: column;
 // justify-items: center;
