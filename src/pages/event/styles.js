@@ -64,3 +64,13 @@ export const ContainerIcon = styled.div`
 margin:10px;
 
 `
+
+export const Input = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+ span{
+   font-size: 1.3rem;
+   margin: 1rem;
+ }
+`

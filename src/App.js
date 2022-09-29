@@ -4,17 +4,18 @@ import Router from "../src/routes/Router";
 import { GlobalStyles, theme } from "./Theme";
 import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
+import  GlobalState  from "./Global/GlobalState";
 
 function App() {
   const [data , setData] =  useState();
   return (
     <ThemeProvider theme={theme}>
-      {/* <GlobalState> */}
+      <GlobalState>
         <GlobalStyles />
         <BrowserRouter>
           <Router />
         </BrowserRouter>
-      {/* </GlobalState> */}
+      </GlobalState>
     </ThemeProvider>
   );
 }

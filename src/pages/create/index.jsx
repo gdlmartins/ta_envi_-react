@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-// import { GlobalStateContext } from "../../global/GlobalStateContext";
+import { GlobalStateContext } from "../../Global/GlobalStateContext";
 import { gotoEvent, gotoHome } from "../../routes/coordinator";
 import { Button, Container } from "../landing/styles";
 import * as Styled from "./styles";
@@ -7,7 +7,7 @@ import * as Styled from "./styles";
 
 import useForm from '../../hooks/useForm';
 import { IoCameraSharp , IoArrowBack } from "react-icons/io5";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { storage } from "../../service/firebase";
 import { v4 as uuidV4 } from "uuid";
@@ -20,7 +20,7 @@ import {
 } from "@firebase/storage";
 
 const Create = () => {
-  // const { setData } =useContext(GlobalStateContext);
+  const { setData, setimageFromEvent } =useContext(GlobalStateContext);
 
   const { form, onChange, clear } = useForm({
     eventName: "",
@@ -39,10 +39,8 @@ const Create = () => {
   const onSubmit = (e)=>{
     e.preventDefault();
     gotoEvent(navigate);
-    console.log("submit")
-    console.log(form)
-    // setData(form)
-
+    setData(form);
+    setimageFromEvent(imageList);
   }
 
   useEffect(()=>{
