@@ -15,12 +15,6 @@ const Event = (props) => {
   return (
     <Styled.ContainerMain>
       <Styled.ContainerText>
-        {/* <BsChevronRight 
-       style={{ width: "96px" ,
-       height:"36px",
-       borderRadius: "8px"}}/>
-    */}
-
         <Styled.ContainerIcon>
           <Styled.Input>
             <Styled.Icons>
@@ -33,6 +27,11 @@ const Event = (props) => {
               />
             </Styled.Icons>
             <span>{data?.eventName}</span>
+            <span>{data?.starts}</span>
+            {/* <span>{data?.ends}</span> */}
+            <BsChevronRight
+              style={{ width: "96px", height: "36px", borderRadius: "8px" }}
+            />
           </Styled.Input>
         </Styled.ContainerIcon>
 
@@ -47,18 +46,21 @@ const Event = (props) => {
                 }}
               />
             </Styled.Icons>
-            <span>{data?.eventName}</span>
+            <span>{data?.location}</span>
+            <span>{data?.description}</span>
+            <BsChevronRight
+              style={{ width: "96px", height: "36px", borderRadius: "8px" }}
+            />
           </Styled.Input>
         </Styled.ContainerIcon>
       </Styled.ContainerText>
 
       <Styled.ContainerImage>
-      {
-        imageFromEvent? 
-      <img style={{ width: 500, height: 500 }} src={imageFromEvent} />:
-
-        <img src={cake} />
-      }
+        {imageFromEvent ? (
+          <img style={{ width: 500, height: 500 }} src={imageFromEvent} />
+        ) : (
+          <img src={cake} />
+        )}
       </Styled.ContainerImage>
     </Styled.ContainerMain>
   );
