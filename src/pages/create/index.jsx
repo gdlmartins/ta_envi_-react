@@ -43,13 +43,16 @@ const Create = () => {
     setimageFromEvent(imageList);
   }
 
+  
+  let testeImage;
+  
   useEffect(()=>{
-    if (imageUpload === null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + uuidV4()}`);
+    if (imageUpload === null ) return;        
+    const imageRef = ref(storage, `images/${uuidV4()+imageUpload.name}`);
     uploadBytes(imageRef, imageUpload).then((snaphsot) => {
       getDownloadURL(snaphsot.ref).then((url) => setImageList(url));
     });
-  },[(e)=>setImageUpload(e.target.files[0])])
+  },[imageUpload])
 
   return (
     <Container>
